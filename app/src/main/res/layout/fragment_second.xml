@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:paddingHorizontal="40dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.ui.activity.main.MainActivity">
+
+    <EditText
+        android:paddingStart="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/inpute_type"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:hint="@string/title"
+        app:layout_constraintBottom_toTopOf="@id/ed_desc"
+        android:id="@+id/ed_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <EditText
+        android:paddingStart="4dp"
+        android:background="@drawable/inpute_type"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:hint="@string/esc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/ed_desc"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:backgroundTint="@color/black"
+        android:text="@string/save"
+        android:id="@+id/btn_save"
+        app:layout_constraintTop_toBottomOf="@id/ed_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
