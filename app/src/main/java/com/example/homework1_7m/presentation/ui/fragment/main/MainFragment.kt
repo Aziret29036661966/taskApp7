@@ -1,12 +1,14 @@
 package com.example.homework1_7m.presentation.ui.fragment.main
 
-import android.content.DialogInterface
+import android.os.Bundle
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.core.core.BaseFragment
 import com.example.core.core.UIState
-import com.example.core.core.dialogShow
 import com.example.domain.domain.model.Note
 import com.example.homework1_7m.R
 import com.example.homework1_7m.databinding.FragmentMainBinding
@@ -15,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate), NoteAdapter.OnClick {
+class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
     private lateinit var adapter: NoteAdapter
     private val viewModel by viewModels<MainViewModel>()
@@ -59,7 +61,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 //                    TODO("show progress bar")
                 }
                 is UIState.Success -> {
-                    viewModel.getAllNotes()
+                    // adapter.setList()
                 }
             }
         }
@@ -121,18 +123,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     }
 
     private fun initAdapter() {
-        adapter = NoteAdapter(this)
+        adapter = NoteAdapter()
         binding().rvNotes.adapter = adapter
     }
 
-    override fun deleteP(pos: Int) {
-        viewModel.getAllNotes()
-
-        val listener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { _, which ->
-            when(which){
-                DialogInterface.BUTTON_POSITIVE -> viewModel.deleteNote(adapter.getItem(pos))
-            }
-        }
-        requireActivity().dialogShow(unit = listener)
-    }
 }
